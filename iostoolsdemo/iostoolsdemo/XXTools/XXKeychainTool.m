@@ -42,7 +42,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
         _label = [label copy];
         _synchronizable = synchronizable;
         
-        // 初始化串行队列，用于防止连续操作下出现竞态条件
+        // 串行队列，用于防止连续操作下出现竞态条件
         _serialQueue = dispatch_queue_create("com.xxkeychaintool.serialqueue", DISPATCH_QUEUE_SERIAL);
     }
     return self;
@@ -119,9 +119,9 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
+                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
+                                               code:-1
+                                           userInfo:@{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -148,9 +148,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
             } @catch (NSException *exception) {
                 [strongSelf switchToMainThread:^{
                     if (completion) {
-                        NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                             code: -1
-                                                         userInfo: @{NSLocalizedDescriptionKey: exception.reason}];
+                        NSError *error = [strongSelf errorWithCode:-1 description:exception.reason];
                         completion(NO, error);
                     }
                 }];
@@ -160,9 +158,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
+                    NSError *error = [strongSelf errorWithCode:-1 description:XXKeychainToolNotSupportedErrorMessage];
                     completion(nil, error);
                 }
             }];
@@ -203,9 +199,9 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
+                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
+                                               code:-1
+                                           userInfo:@{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -259,9 +255,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
             } @catch (NSException *exception) {
                 [strongSelf switchToMainThread:^{
                     if (completion) {
-                        NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                             code: -1
-                                                         userInfo: @{NSLocalizedDescriptionKey: exception.reason}];
+                        NSError *error = [strongSelf errorWithCode:-1 description:exception.reason];
                         completion(nil, error);
                     }
                 }];
@@ -275,9 +269,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
+                    NSError *error = [strongSelf errorWithCode:-1 description:XXKeychainToolNotSupportedErrorMessage];
                     completion(nil, error);
                 }
             }];
@@ -296,9 +288,9 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
+                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
+                                               code:-1
+                                           userInfo:@{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(NO, error);
                 }
             }];
@@ -327,9 +319,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
+                    NSError *error = [strongSelf errorWithCode:-1 description:XXKeychainToolNotSupportedErrorMessage];
                     completion(nil, error);
                 }
             }];
@@ -349,9 +339,9 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
+                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
+                                               code:-1
+                                           userInfo:@{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(NO, error);
                 }
             }];
@@ -380,9 +370,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
                 } else {
                     [strongSelf switchToMainThread:^{
                         if (completion) {
-                            NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                                 code: -1
-                                                             userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolCertificateCreationErrorMessage}];
+                            NSError *error = [strongSelf errorWithCode:-1 description:XXKeychainToolCertificateCreationErrorMessage];
                             completion(NO, error);
                         }
                     }];
@@ -408,9 +396,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
-                                                         code: -1
-                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
+                    NSError *error = [strongSelf errorWithCode:-1 description:XXKeychainToolNotSupportedErrorMessage];
                     completion(nil, error);
                 }
             }];
@@ -479,6 +465,14 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
     
 }
 
+- (NSError *)errorWithCode:(NSInteger)code description:(NSString *)description {
+    
+    return [NSError errorWithDomain:XXKeychainToolErrorDomain
+                               code:code
+                           userInfo:@{NSLocalizedDescriptionKey: description}];
+    
+}
+
 
 
 #pragma mark - setter
@@ -488,11 +482,11 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
 }
 
 - (void)setAccessGroup:(NSString *)accessGroup {
-    _accessGroup = accessGroup;
+    _accessGroup = [accessGroup copy];
 }
 
 - (void)setLabel:(NSString *)label {
-    _label = label;
+    _label = [label copy];
 }
 
 - (void)setSynchronizable:(BOOL)synchronizable {
