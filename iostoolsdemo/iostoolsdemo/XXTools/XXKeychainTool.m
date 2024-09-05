@@ -8,7 +8,14 @@
 #import "XXKeychainTool.h"
 #import <Security/Security.h>
 
+#pragma mark - const
 static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain";
+static NSString * const XXKeychainToolSelfDeallocatedErrorMessage = @"Self was deallocated";
+static NSString * const XXKeychainToolNotSupportedErrorMessage = @"Not supported yet";
+static NSString * const XXKeychainToolInvalidCertificateDataExceptionName = @"InvalidCertificateData";
+static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed to create certificate from data";
+
+
 
 @implementation XXKeychainTool {
     dispatch_queue_t _serialQueue;
@@ -112,9 +119,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Self was deallocated"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -132,8 +139,8 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             @try {
                 SecCertificateRef certificate = SecCertificateCreateWithData(NULL, (__bridge CFDataRef)data);
                 if (certificate == NULL) {
-                    @throw [NSException exceptionWithName:@"InvalidCertificateData"
-                                                   reason:@"Failed to create certificate from data"
+                    @throw [NSException exceptionWithName:XXKeychainToolInvalidCertificateDataExceptionName
+                                                   reason:XXKeychainToolCertificateCreationErrorMessage
                                                  userInfo:nil];
                 }
                 attributesToUpdate[(__bridge id)kSecValueRef] = (__bridge id)certificate;
@@ -141,9 +148,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             } @catch (NSException *exception) {
                 [strongSelf switchToMainThread:^{
                     if (completion) {
-                        NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                             code:-1
-                                                         userInfo:@{NSLocalizedDescriptionKey: exception.reason}];
+                        NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                             code: -1
+                                                         userInfo: @{NSLocalizedDescriptionKey: exception.reason}];
                         completion(NO, error);
                     }
                 }];
@@ -153,9 +160,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Not supported yet"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -196,9 +203,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Self was deallocated"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -252,9 +259,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             } @catch (NSException *exception) {
                 [strongSelf switchToMainThread:^{
                     if (completion) {
-                        NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                             code:-1
-                                                         userInfo:@{NSLocalizedDescriptionKey: exception.reason}];
+                        NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                             code: -1
+                                                         userInfo: @{NSLocalizedDescriptionKey: exception.reason}];
                         completion(nil, error);
                     }
                 }];
@@ -268,9 +275,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Not supported yet"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -289,9 +296,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Self was deallocated"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(NO, error);
                 }
             }];
@@ -320,9 +327,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Not supported yet"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
                     completion(nil, error);
                 }
             }];
@@ -342,9 +349,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
         if (!strongSelf) {
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Self was deallocated"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolSelfDeallocatedErrorMessage}];
                     completion(NO, error);
                 }
             }];
@@ -373,9 +380,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
                 } else {
                     [strongSelf switchToMainThread:^{
                         if (completion) {
-                            NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                                 code:-1
-                                                             userInfo:@{NSLocalizedDescriptionKey: @"Failed to create certificate from data"}];
+                            NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                                 code: -1
+                                                             userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolCertificateCreationErrorMessage}];
                             completion(NO, error);
                         }
                     }];
@@ -401,9 +408,9 @@ static NSString * const XXKeychainToolErrorDomain = @"XXKeychainToolErrorDomain"
             // kSecClassKey、kSecClassIdentity 暂不支持
             [strongSelf switchToMainThread:^{
                 if (completion) {
-                    NSError *error = [NSError errorWithDomain:XXKeychainToolErrorDomain
-                                                         code:-1
-                                                     userInfo:@{NSLocalizedDescriptionKey: @"Not supported yet"}];
+                    NSError *error = [NSError errorWithDomain: XXKeychainToolErrorDomain
+                                                         code: -1
+                                                     userInfo: @{NSLocalizedDescriptionKey: XXKeychainToolNotSupportedErrorMessage}];
                     completion(nil, error);
                 }
             }];
