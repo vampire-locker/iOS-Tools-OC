@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define XX_STRING_EMPTY(a) [NSString isEmpty:a]
+
 @interface NSString (XXExtension)
 
 
