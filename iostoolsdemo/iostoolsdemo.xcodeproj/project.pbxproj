@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		53196C4D2C7DD62A00669C17 /* NSString+XXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 53196C4C2C7DD62A00669C17 /* NSString+XXExtension.m */; };
+		53196C562C7DE7B200669C17 /* XXStringTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 53196C552C7DE7B200669C17 /* XXStringTool.m */; };
+		53196C5A2C7F0EE900669C17 /* XXKeychainTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 53196C592C7F0EE900669C17 /* XXKeychainTool.m */; };
 		532253562C74745500288635 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 532253552C74745500288635 /* AppDelegate.m */; };
 		532253592C74745500288635 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 532253582C74745500288635 /* SceneDelegate.m */; };
 		5322535C2C74745500288635 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5322535B2C74745500288635 /* ViewController.m */; };
@@ -27,6 +29,10 @@
 /* Begin PBXFileReference section */
 		53196C4B2C7DD62A00669C17 /* NSString+XXExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+XXExtension.h"; sourceTree = "<group>"; };
 		53196C4C2C7DD62A00669C17 /* NSString+XXExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+XXExtension.m"; sourceTree = "<group>"; };
+		53196C542C7DE7B200669C17 /* XXStringTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXStringTool.h; sourceTree = "<group>"; };
+		53196C552C7DE7B200669C17 /* XXStringTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXStringTool.m; sourceTree = "<group>"; };
+		53196C582C7F0EE900669C17 /* XXKeychainTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXKeychainTool.h; sourceTree = "<group>"; };
+		53196C592C7F0EE900669C17 /* XXKeychainTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXKeychainTool.m; sourceTree = "<group>"; };
 		532253512C74745500288635 /* iostoolsdemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iostoolsdemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		532253542C74745500288635 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		532253552C74745500288635 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +134,10 @@
 				532253822C758CE200288635 /* XXDeviceTool.m */,
 				5322536E2C7474D100288635 /* XXViewControllerTool.h */,
 				5322536F2C7474D100288635 /* XXViewControllerTool.m */,
+				53196C542C7DE7B200669C17 /* XXStringTool.h */,
+				53196C552C7DE7B200669C17 /* XXStringTool.m */,
+				53196C582C7F0EE900669C17 /* XXKeychainTool.h */,
+				53196C592C7F0EE900669C17 /* XXKeychainTool.m */,
 			);
 			path = XXTools;
 			sourceTree = "<group>";
@@ -207,11 +217,13 @@
 				532253792C7488DC00288635 /* ThirdViewController.m in Sources */,
 				532253562C74745500288635 /* AppDelegate.m in Sources */,
 				5322537C2C748BF900288635 /* CustomViewController.m in Sources */,
+				53196C562C7DE7B200669C17 /* XXStringTool.m in Sources */,
 				53196C4D2C7DD62A00669C17 /* NSString+XXExtension.m in Sources */,
 				532253832C758CE200288635 /* XXDeviceTool.m in Sources */,
 				532253762C7488C800288635 /* SecondViewController.m in Sources */,
 				532253702C7474D100288635 /* XXViewControllerTool.m in Sources */,
 				532253802C75898A00288635 /* XXAppTool.m in Sources */,
+				53196C5A2C7F0EE900669C17 /* XXKeychainTool.m in Sources */,
 				532253672C74745600288635 /* main.m in Sources */,
 				532253592C74745500288635 /* SceneDelegate.m in Sources */,
 			);
