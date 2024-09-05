@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, XXSecClassType) {
     // kSecClassInternetPassword 互联网密码
     XXSecClassTypeInternetPassword,
-    // kSecClassGenericPassword 通用密码（最常用）
+    // kSecClassGenericPassword 通用密码（最常用、默认）
     XXSecClassTypeGenericPassword,
     // kSecClassCertificate 证书
     XXSecClassTypeCertificate,
