@@ -28,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)appIdentifier;
 
 
+/// 根据 key 获取 Info.plist 的对应 value
+/// - Parameter key: 键值
++ (NSString *)mainBundleValueWithKey:(NSString *)key;
+
+
 /// 应用是否横屏
 + (BOOL)isLandscape;
 

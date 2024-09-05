@@ -43,6 +43,15 @@
 }
 
 
+/// 根据 key 获取 value
++ (NSString *)mainBundleValueWithKey:(NSString *)key {
+    if (!key || key.length == 0) {
+        return nil;
+    }
+    return [[self appInfoDic] objectForKey:key];
+}
+
+
 // 应用是否横屏
 + (BOOL)isLandscape {
     // iOS 13 及以上，优先使用当前场景的界面方向
