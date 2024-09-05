@@ -46,16 +46,16 @@ typedef void (^XXKeychainDataCompletionBlock)(NSData * _Nullable data, NSError *
 @property (nonatomic, assign) XXSecClassType type;
 
 /// kSecAttrAccessGroup 秘钥链组
-@property (nonatomic, strong) NSString *accessGroup;
+@property (nonatomic, copy) NSString *accessGroup;
 
 /// kSecAttrService 服务标识符
-@property (nonatomic, strong) NSString *service;
+@property (nonatomic, copy) NSString *service;
 
 /// kSecAttrAccount 用户标识符
-@property (nonatomic, strong) NSString *account;
+@property (nonatomic, copy) NSString *account;
 
 /// kSecAttrLabel 标签标识符
-@property (nonatomic, strong) NSString *label;
+@property (nonatomic, copy) NSString *label;
 
 /// kSecAttrSynchronizable 是否在启用了 iCloud Keychain 的设备之间进行同步
 @property (nonatomic, assign) BOOL synchronizable;

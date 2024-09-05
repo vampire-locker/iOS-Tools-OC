@@ -36,7 +36,7 @@ static NSString * const XXKeychainToolCertificateCreationErrorMessage = @"Failed
         NSAssert(account.length > 0, @"Account cannot be empty");
         
         _type = type;
-        _accessGroup = accessGroup;
+        _accessGroup = [accessGroup copy];
         _service = [service copy];
         _account = [account copy];
         _label = [label copy];
